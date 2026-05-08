@@ -1331,17 +1331,41 @@ a {
 }
 
 @media (max-width: 768px) {
-    .nav-links, .desktop-only {
-        display: none;
+    .desktop-only {
+        display: none !important;
     }
     .menu-toggle {
         display: block;
+        font-size: 1.5rem;
+        color: var(--secondary);
+    }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 232, 240, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 30px 0;
+        gap: 25px;
+        text-align: center;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
     }
     .section-title {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
     .marquee-container {
         transform: rotate(0deg) scale(1);
@@ -1353,6 +1377,50 @@ a {
         height: 400px;
     }
     .wa-tooltip {
-        display: none; /* Ocultar tooltip en celular para que no estorbe */
+        display: none; 
+    }
+    .cart-sidebar {
+        right: -100%;
+        max-width: 100%;
+    }
+    .top-bar {
+        font-size: 0.65rem;
+        padding: 10px 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .editorial-img-box {
+        height: 350px;
+    }
+    .card-img-container, .card-img-container.tall {
+        height: 350px;
+    }
+    .btn-solid {
+        padding: 12px 30px;
+        font-size: 0.8rem;
+    }
+    .premium-grid, .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    .img-frame-1 {
+        width: 90%;
+        height: 90%;
+    }
+    .img-frame-2 {
+        width: 70%;
+        height: 70%;
+    }
+    .footer-brand p {
+        font-size: 0.9rem;
     }
 }

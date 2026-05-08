@@ -1,6 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navbar Glassmorphism effect on scroll
+    // 1. Navbar Glassmorphism & Mobile Menu
     const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Cerrar menú móvil al hacer click en un enlace
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuToggle.querySelector('i').classList.remove('fa-times');
+            menuToggle.querySelector('i').classList.add('fa-bars');
+        });
+    });
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.style.background = 'rgba(255, 232, 240, 0.95)'; // Rosadito sólido
