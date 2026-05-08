@@ -1391,6 +1391,17 @@ a {
         font-size: 0.65rem;
         padding: 10px 5px;
     }
+    .lightbox-img {
+        max-width: 90%;
+        max-height: 75vh;
+    }
+    .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
