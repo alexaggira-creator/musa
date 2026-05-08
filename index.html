@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CRITICAL VIEWPORT META TAG -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MUSA | Moda Íntima Exclusiva</title>
     <link rel="stylesheet" href="style.css">
     <!-- Premium Fonts -->
@@ -11,11 +12,6 @@
 </head>
 <body class="blush-theme">
     
-    <!-- Floating Background Orbs -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-    <div class="bg-orb orb-3"></div>
-
     <!-- Fixed Header Wrapper to prevent overlap on mobile -->
     <div class="fixed-header-wrapper">
         <!-- Top Announcement Bar (Neuromarketing: Scarcity & Shipping) -->
@@ -46,236 +42,278 @@
         </nav>
     </div>
 
-    <!-- Cinematic Hero -->
-    <header id="inicio" class="hero">
-        <div class="hero-split">
-            <div class="hero-text-area fade-up-element">
-                <div class="badge-premium pulse-slow">Nueva Colección 2026</div>
-                <h2 class="hero-title">Siente la<br><span class="text-cursive">Magia</span> en tu Piel</h2>
-                <p class="hero-subtitle">Diseños ultra-femeninos, detalles románticos y una suavidad que te abraza. Despierta a la Musa que llevas dentro.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#coleccion" class="btn-solid btn-glow-red"><i class="fas fa-heart"></i> Descubrir Colección</a>
-                    <a href="#experiencia" class="btn-outline">Conocer más</a>
+    <!-- SITE WRAPPER TO PREVENT HORIZONTAL SCROLL ON MOBILE -->
+    <div class="site-wrapper" style="overflow-x: hidden; width: 100%; max-width: 100vw; position: relative;">
+
+        <!-- Floating Background Orbs -->
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+
+        <!-- Cinematic Hero -->
+        <header id="inicio" class="hero">
+            <div class="hero-split">
+                <div class="hero-text-area fade-up-element">
+                    <div class="badge-premium pulse-slow">Nueva Colección 2026</div>
+                    <h2 class="hero-title">Siente la<br><span class="text-cursive">Magia</span> en tu Piel</h2>
+                    <p class="hero-subtitle">Diseños ultra-femeninos, detalles románticos y una suavidad que te abraza. Despierta a la Musa que llevas dentro.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#coleccion" class="btn-solid btn-glow-red"><i class="fas fa-heart"></i> Descubrir Colección</a>
+                        <a href="#experiencia" class="btn-outline">Conocer más</a>
+                    </div>
+                    
+                    <div class="trust-indicators">
+                        <div class="trust-item"><i class="fas fa-shield-alt"></i> Compra Segura</div>
+                        <div class="trust-item"><i class="fas fa-star"></i> 5/5 en Reseñas</div>
+                    </div>
                 </div>
                 
-                <div class="trust-indicators">
-                    <div class="trust-item"><i class="fas fa-shield-alt"></i> Compra Segura</div>
-                    <div class="trust-item"><i class="fas fa-star"></i> 5/5 en Reseñas</div>
+                <div class="hero-image-area fade-left-element">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop" alt="Colección Musa" class="hero-img-main">
+                        <!-- Sparkle decorations -->
+                        <i class="fas fa-sparkles sparkle s1"></i>
+                        <i class="fas fa-sparkles sparkle s2"></i>
+                    </div>
                 </div>
             </div>
-            
-            <div class="hero-image-area fade-left-element">
-                <div class="hero-image-container">
-                    <img src="https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop" alt="Colección Musa" class="hero-img-main">
-                    <!-- Sparkle decorations -->
-                    <i class="fas fa-sparkles sparkle s1"></i>
-                    <i class="fas fa-sparkles sparkle s2"></i>
-                </div>
+        </header>
+
+        <!-- Marquee -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>✨ ESTILO COQUETTE ✨ LENCERÍA EXCLUSIVA ✨ COMODIDAD PREMIUM ✨ EMPODERAMIENTO FEMENINO ✨ DISEÑOS ÚNICOS</span>
+                <span>✨ ESTILO COQUETTE ✨ LENCERÍA EXCLUSIVA ✨ COMODIDAD PREMIUM ✨ EMPODERAMIENTO FEMENINO ✨ DISEÑOS ÚNICOS</span>
             </div>
         </div>
-    </header>
 
-    <!-- Marquee -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>✨ ESTILO COQUETTE ✨ LENCERÍA EXCLUSIVA ✨ COMODIDAD PREMIUM ✨ EMPODERAMIENTO FEMENINO ✨ DISEÑOS ÚNICOS</span>
-            <span>✨ ESTILO COQUETTE ✨ LENCERÍA EXCLUSIVA ✨ COMODIDAD PREMIUM ✨ EMPODERAMIENTO FEMENINO ✨ DISEÑOS ÚNICOS</span>
-        </div>
-    </div>
-
-    <!-- Editorial Section -->
-    <section id="experiencia" class="editorial-section">
-        <div class="editorial-grid">
-            <div class="editorial-img-box reveal-left">
-                <div class="img-frame-1">
-                    <img src="https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop" alt="Experiencia Musa" class="editorial-img">
+        <!-- Editorial Section -->
+        <section id="experiencia" class="editorial-section">
+            <div class="editorial-grid">
+                <div class="editorial-img-box reveal-left">
+                    <div class="img-frame-1">
+                        <img src="https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop" alt="Experiencia Musa" class="editorial-img">
+                    </div>
+                    <div class="img-frame-2 float-anim-delayed">
+                        <img src="https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop" alt="Detalle Seda" class="editorial-img-small">
+                    </div>
                 </div>
-                <div class="img-frame-2 float-anim-delayed">
-                    <img src="https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop" alt="Detalle Seda" class="editorial-img-small">
-                </div>
-            </div>
-            <div class="editorial-text reveal-right">
-                <h3 class="section-title">El Arte de la<br><span class="text-highlight">Feminidad</span></h3>
-                <p class="editorial-desc">En Musa, hemos redefinido la ropa de dormir. Combinamos la estética más romántica y delicada con materiales de alta costura que cuidan tu piel. Porque mereces sentirte como una diosa en tu propio hogar.</p>
-                
-                <div class="perks-list">
-                    <div class="perk-item glass-perk">
-                        <div class="perk-icon"><i class="fas fa-heart"></i></div>
-                        <div>
-                            <h4>Estética Coquette</h4>
-                            <p>Lazos, encajes suaves y estampados florales que enamoran a primera vista.</p>
+                <div class="editorial-text reveal-right">
+                    <h3 class="section-title">El Arte de la<br><span class="text-highlight">Feminidad</span></h3>
+                    <p class="editorial-desc">En Musa, hemos redefinido la ropa de dormir. Combinamos la estética más romántica y delicada con materiales de alta costura que cuidan tu piel. Porque mereces sentirte como una diosa en tu propio hogar.</p>
+                    
+                    <div class="perks-list">
+                        <div class="perk-item glass-perk">
+                            <div class="perk-icon"><i class="fas fa-heart"></i></div>
+                            <div>
+                                <h4>Estética Coquette</h4>
+                                <p>Lazos, encajes suaves y estampados florales que enamoran a primera vista.</p>
+                            </div>
+                        </div>
+                        <div class="perk-item glass-perk">
+                            <div class="perk-icon"><i class="fas fa-feather-alt"></i></div>
+                            <div>
+                                <h4>Seda y Algodón Premium</h4>
+                                <p>Texturas lujosas diseñadas para brindar el máximo confort y durabilidad.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="perk-item glass-perk">
-                        <div class="perk-icon"><i class="fas fa-feather-alt"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collection Showcase -->
+        <section id="coleccion" class="boutique">
+            <div class="section-header reveal-up">
+                <h3 class="section-title center">Nuestra <span class="text-cursive">Boutique</span></h3>
+                <p class="section-desc center">Descubre los enterizos, pijamas y lencería que están robando corazones.</p>
+            </div>
+
+            <div class="premium-grid masonry-layout">
+                <!-- Product 1 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="card-img-container">
+                        <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (4).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Set Seda Esencial" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (4).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">Top de Ventas</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Set Seda Esencial</h4>
+                        <p class="price">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="card-img-container tall">
+                        <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (2).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Enterizo Confort" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (2).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">El Más Deseado</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Enterizo Confort</h4>
+                        <p class="price">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                    <div class="card-img-container">
+                        <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (1).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Pijama Floral Suave" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (1).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">En Tendencia</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Pijama Floral Suave</h4>
+                        <p class="price highlight">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="card-img-container">
+                        <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Colección Romance" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">Edición Limitada</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Colección Romance</h4>
+                        <p class="price">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="card-img-container tall">
+                        <img src="WhatsApp Image 2026-04-05 at 8.07.00 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Set Lencería Premium" data-price="85000" data-img="WhatsApp Image 2026-04-05 at 8.07.00 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">Favorito Musa</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Set Lencería Premium</h4>
+                        <p class="price">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                    <div class="card-img-container">
+                        <img src="WhatsApp Image 2026-04-05 at 8.08.01 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Boutique Íntima" data-price="85000" data-img="WhatsApp Image 2026-04-05 at 8.08.01 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">Últimas Unidades</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Boutique Íntima</h4>
+                        <p class="price highlight">$85.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="card-img-container">
+                        <img src="WhatsApp Image 2026-04-12 at 3.14.04 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Pijama Sueño Suave" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.04 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">Recién Llegado</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Pijama Sueño Suave</h4>
+                        <p class="price">$85.000 COP</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Testimonials -->
+        <section id="testimonios" class="reviews-section">
+            <h3 class="section-title center reveal-up">Lo que dicen nuestras <span class="text-cursive">Musas</span></h3>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card reveal-up" style="transition-delay: 0.1s;">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"La tela es un sueño absoluto. Nunca me había sentido tan hermosa y cómoda para dormir. ¡Recomendadísimo!"</p>
+                    <div class="review-author">
+                        <div class="author-avatar">V</div>
                         <div>
-                            <h4>Seda y Algodón Premium</h4>
-                            <p>Texturas lujosas diseñadas para brindar el máximo confort y durabilidad.</p>
+                            <h5>Valentina Gómez</h5>
+                            <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card reveal-up" style="transition-delay: 0.2s;">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"Compré el enterizo de flores y es espectacular. Horma perfecto en Talla M. La atención por WhatsApp fue un 10/10."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">C</div>
+                        <div>
+                            <h5>Camila Restrepo</h5>
+                            <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card reveal-up" style="transition-delay: 0.3s;">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="review-text">"Los detalles del encaje y cómo viene empacado... de verdad te hacen sentir súper especial. Volveré a comprar pronto."</p>
+                    <div class="review-author">
+                        <div class="author-avatar">A</div>
+                        <div>
+                            <h5>Andrea Torres</h5>
+                            <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Collection Showcase (Now before reviews) -->
-    <section id="coleccion" class="boutique">
-        <div class="section-header reveal-up">
-            <h3 class="section-title center">Nuestra <span class="text-cursive">Boutique</span></h3>
-            <p class="section-desc center">Descubre los enterizos, pijamas y lencería que están robando corazones.</p>
-        </div>
-
-        <div class="premium-grid masonry-layout">
-            <!-- Product 1 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
-                <div class="card-img-container">
-                    <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (4).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Set Seda Esencial" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (4).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge hot">Top de Ventas</span>
-                </div>
-                <div class="card-details">
-                    <h4>Set Seda Esencial</h4>
-                    <p class="price">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
-                <div class="card-img-container tall">
-                    <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (2).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Enterizo Confort" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (2).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge urgent">El Más Deseado</span>
-                </div>
-                <div class="card-details">
-                    <h4>Enterizo Confort</h4>
-                    <p class="price">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
-                <div class="card-img-container">
-                    <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (1).jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Pijama Floral Suave" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM (1).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge hot">En Tendencia</span>
-                </div>
-                <div class="card-details">
-                    <h4>Pijama Floral Suave</h4>
-                    <p class="price highlight">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
-                <div class="card-img-container">
-                    <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Colección Romance" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.05 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge urgent">Edición Limitada</span>
-                </div>
-                <div class="card-details">
-                    <h4>Colección Romance</h4>
-                    <p class="price">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
-                <div class="card-img-container tall">
-                    <img src="WhatsApp Image 2026-04-05 at 8.07.00 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Set Lencería Premium" data-price="85000" data-img="WhatsApp Image 2026-04-05 at 8.07.00 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge hot">Favorito Musa</span>
-                </div>
-                <div class="card-details">
-                    <h4>Set Lencería Premium</h4>
-                    <p class="price">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
-                <div class="card-img-container">
-                    <img src="WhatsApp Image 2026-04-05 at 8.08.01 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Boutique Íntima" data-price="85000" data-img="WhatsApp Image 2026-04-05 at 8.08.01 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge urgent">Últimas Unidades</span>
-                </div>
-                <div class="card-details">
-                    <h4>Boutique Íntima</h4>
-                    <p class="price highlight">$85.000 COP</p>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
-                <div class="card-img-container">
-                    <img src="WhatsApp Image 2026-04-12 at 3.14.04 PM.jpeg" alt="Pijama Exclusiva Musa" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
-                    <div class="card-overlay">
-                        <button class="btn-solid w-100 buy-btn" data-product="Pijama Sueño Suave" data-price="85000" data-img="WhatsApp Image 2026-04-12 at 3.14.04 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
-                    </div>
-                    <span class="status-badge hot">Recién Llegado</span>
-                </div>
-                <div class="card-details">
-                    <h4>Pijama Sueño Suave</h4>
-                    <p class="price">$85.000 COP</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof / Testimonials (Now after collection) -->
-    <section id="testimonios" class="reviews-section">
-        <h3 class="section-title center reveal-up">Lo que dicen nuestras <span class="text-cursive">Musas</span></h3>
-        <div class="reviews-grid">
-            <!-- Review 1 -->
-            <div class="review-card reveal-up" style="transition-delay: 0.1s;">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"La tela es un sueño absoluto. Nunca me había sentido tan hermosa y cómoda para dormir. ¡Recomendadísimo!"</p>
-                <div class="review-author">
-                    <div class="author-avatar">V</div>
-                    <div>
-                        <h5>Valentina Gómez</h5>
-                        <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
+        <!-- Footer -->
+        <footer class="footer-premium">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h1 class="brand-logo">Musa<span class="brand-sub">moda íntima</span></h1>
+                    <p>Donde la elegancia, la pasión y la comodidad se encuentran en cada detalle. Hecho con ❤️ para ti.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-            </div>
-            <!-- Review 2 -->
-            <div class="review-card reveal-up" style="transition-delay: 0.2s;">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"Compré el enterizo de flores y es espectacular. Horma perfecto en Talla M. La atención por WhatsApp fue un 10/10."</p>
-                <div class="review-author">
-                    <div class="author-avatar">C</div>
-                    <div>
-                        <h5>Camila Restrepo</h5>
-                        <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
+                <div class="footer-links">
+                    <h4>Medios de Pago Seguro</h4>
+                    <div class="payment-methods">
+                        <span class="pay-badge">Nequi</span>
+                        <span class="pay-badge">Bancolombia</span>
                     </div>
                 </div>
-            </div>
-            <!-- Review 3 -->
-            <div class="review-card reveal-up" style="transition-delay: 0.3s;">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="review-text">"Los detalles del encaje y cómo viene empacado... de verdad te hacen sentir súper especial. Volveré a comprar pronto."</p>
-                <div class="review-author">
-                    <div class="author-avatar">A</div>
-                    <div>
-                        <h5>Andrea Torres</h5>
-                        <span><i class="fas fa-check-circle" style="color:#25D366"></i> Compra Verificada</span>
-                    </div>
+                <div class="footer-links">
+                    <h4>Atención Exclusiva</h4>
+                    <ul>
+                        <li><a href="#">Envíos Discretos a Todo el País</a></li>
+                        <li><a href="#">Guía de Tallas (Asesoría Personal)</a></li>
+                        <li><a href="#">Políticas de Cambio y Calidad</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Musa Moda Íntima. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div> <!-- /site-wrapper -->
 
     <!-- Shopping Cart Overlay & Sidebar -->
     <div class="cart-overlay" id="cart-overlay"></div>
@@ -322,39 +360,6 @@
         <div class="wa-tooltip">¡Hola! ¿Te ayudo con tu talla?</div>
         <i class="fab fa-whatsapp"></i>
     </a>
-
-    <!-- Footer -->
-    <footer class="footer-premium">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h1 class="brand-logo">Musa<span class="brand-sub">moda íntima</span></h1>
-                <p>Donde la elegancia, la pasión y la comodidad se encuentran en cada detalle. Hecho con ❤️ para ti.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Medios de Pago Seguro</h4>
-                <div class="payment-methods">
-                    <span class="pay-badge">Nequi</span>
-                    <span class="pay-badge">Bancolombia</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Atención Exclusiva</h4>
-                <ul>
-                    <li><a href="#">Envíos Discretos a Todo el País</a></li>
-                    <li><a href="#">Guía de Tallas (Asesoría Personal)</a></li>
-                    <li><a href="#">Políticas de Cambio y Calidad</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>&copy; 2026 Musa Moda Íntima. Todos los derechos reservados.</p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
