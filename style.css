@@ -25,13 +25,24 @@
     box-sizing: border-box;
 }
 
-body.blush-theme {
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: var(--font-body);
     background-color: var(--bg-base);
     color: var(--text-main);
-    font-family: var(--font-body);
-    overflow-x: hidden;
-    line-height: 1.6;
-    position: relative;
+}
+
+/* Header Wrapper */
+.fixed-header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
 }
 
 html {
@@ -100,16 +111,12 @@ a {
 
 /* Navbar */
 .navbar {
-    position: fixed;
-    top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 6%;
-    z-index: 1000;
-    transition: all 0.4s ease;
-    border-bottom: 1px solid rgba(255, 127, 165, 0.15);
+    padding: 20px 6%;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .glass-nav {
@@ -1107,16 +1114,6 @@ a {
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10002;
-}
-
-/* Navbar adjust for top bar */
-.navbar {
-    top: 34px; /* Space for top bar */
 }
 
 /* Reviews / Social Proof */
@@ -1390,20 +1387,23 @@ a {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 180px;
+    }
     .hero-title {
-        font-size: 2.8rem;
-    }
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    .section-title {
         font-size: 2.2rem;
     }
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
     .editorial-img-box {
-        height: 350px;
+        height: 300px;
     }
     .card-img-container, .card-img-container.tall {
-        height: 350px;
+        height: 300px;
     }
     .btn-solid {
         padding: 12px 30px;
@@ -1411,6 +1411,7 @@ a {
     }
     .premium-grid, .reviews-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     .img-frame-1 {
         width: 90%;
@@ -1422,5 +1423,8 @@ a {
     }
     .footer-brand p {
         font-size: 0.9rem;
+    }
+    .review-card {
+        padding: 25px 20px;
     }
 }
