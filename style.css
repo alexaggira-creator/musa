@@ -137,9 +137,10 @@ a {
     color: var(--text-main);
     display: flex;
     flex-direction: column;
-    line-height: 0.8;
+    line-height: 0.9;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    gap: 4px; /* Separación solicitada por el usuario */
 }
 
 .brand-sub {
