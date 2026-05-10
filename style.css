@@ -1,22 +1,27 @@
 :root {
     --primary: #ff7fa5;     
+    --primary-dark: #e66a8e;
+    --primary-light: #fff0f5; 
+    --primary-glow: rgba(255, 127, 165, 0.3);
+    
     --secondary: #eb061d;   
+    --luxury-gold: #d4af37;
     
-    --primary-light: #ffe6ee; 
-    --primary-glow: rgba(255, 127, 165, 0.5);
-    --secondary-glow: rgba(235, 6, 29, 0.4);
-    
-    --bg-base: #ffe8f0;     /* Rosadito suave solicitado por el usuario */
+    --bg-base: #fff9fb;     /* Un rosado mucho más sutil y elegante */
     --surface-light: #ffffff; 
-    --surface-glass: rgba(255, 255, 255, 0.6);
+    --surface-glass: rgba(255, 255, 255, 0.7);
     
-    --text-main: #2A1F22;    
-    --text-muted: #8A7A7D;   
+    --text-main: #1a1a1a;    
+    --text-muted: #666666;   
     
-    /* Fonts */
-    --font-display: 'Cinzel', serif; 
-    --font-body: 'Montserrat', sans-serif;
-    --font-cursive: 'Pinyon Script', cursive; /* New elegant cursive font */
+    /* Fonts Editorial */
+    --font-display: 'Playfair Display', serif; 
+    --font-body: 'Inter', sans-serif;
+    --font-cursive: 'Pinyon Script', cursive;
+    
+    --shadow-soft: 0 10px 30px rgba(255, 127, 165, 0.12);
+    --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.08);
+    --radius-premium: 24px;
 }
 
 * {
@@ -52,7 +57,8 @@ html {
 
 h1, h2, h3, h4, .brand-logo {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .text-cursive {
@@ -198,14 +204,14 @@ a {
 /* Buttons */
 .btn-solid {
     padding: 16px 40px;
-    background: var(--secondary);
+    background: var(--text-main); /* Negro elegante para botones principales */
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: inline-flex;
@@ -213,27 +219,23 @@ a {
     justify-content: center;
     gap: 10px;
     position: relative;
-    box-shadow: 0 8px 25px var(--secondary-glow);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     overflow: hidden;
 }
 
-.btn-solid::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%; width: 50%; height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-    transform: skewX(-25deg);
-    transition: all 0.7s ease;
-}
-
-.btn-solid:hover::after {
-    left: 200%;
-}
-
 .btn-solid:hover {
-    background: #c40417;
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px var(--secondary-glow);
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.buy-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+    box-shadow: 0 10px 20px var(--primary-glow) !important;
+}
+
+.buy-btn:hover {
+    background: var(--primary-dark) !important;
 }
 
 .btn-sm {
@@ -314,10 +316,11 @@ a {
 }
 
 .hero-title {
-    font-size: 4.8rem;
-    line-height: 1.1;
+    font-size: 5rem;
+    line-height: 1.05;
     margin-bottom: 25px;
     color: var(--text-main);
+    font-weight: 800;
 }
 
 .hero-subtitle {
@@ -682,31 +685,17 @@ a {
 
 .premium-card {
     background: white;
-    border-radius: 25px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    box-shadow: 0 15px 40px rgba(255,127,165,0.08);
+    border-radius: var(--radius-premium);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
     position: relative;
-}
-
-.premium-card::before {
-    content: '';
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    background: linear-gradient(135deg, var(--primary), transparent, var(--secondary));
-    z-index: -1;
-    border-radius: 27px;
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
-.premium-card:hover::before {
-    opacity: 1;
+    border: 1px solid rgba(255, 127, 165, 0.1);
 }
 
 .premium-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 25px 50px rgba(255, 127, 165, 0.2);
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-strong);
 }
 
 .card-img-container {
@@ -724,12 +713,12 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     cursor: zoom-in;
 }
 
 .premium-card:hover .product-image {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .card-overlay {
@@ -759,20 +748,23 @@ a {
 
 .status-badge {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 6px 18px;
+    top: 15px;
+    right: 15px;
+    padding: 6px 15px;
     font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    z-index: 10;
 }
 
 .status-badge.hot {
-    color: var(--primary);
+    color: var(--primary-dark);
+    border: 1px solid var(--primary-light);
 }
 
 .status-badge.urgent {
@@ -781,29 +773,51 @@ a {
 }
 
 .card-details {
-    padding: 25px 15px;
+    padding: 20px 15px 25px;
     text-align: center;
     background: white;
 }
 
 .card-details h4 {
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
     font-family: var(--font-display);
     color: var(--text-main);
+    font-weight: 700;
+}
+
+.size-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.size-option {
+    font-size: 0.7rem;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    color: var(--text-muted);
     font-weight: 600;
 }
 
-.card-details .price {
-    color: var(--secondary); /* Todos los precios en rojo */
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.1rem;
+.size-option.selected {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-color: var(--primary);
 }
 
-.card-details .price.highlight {
-    color: var(--secondary);
+.card-details .price {
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 1.2rem;
+    display: block;
 }
 
 /* Floating WhatsApp */
@@ -1024,13 +1038,13 @@ a {
     position: fixed;
     top: 0; right: 0;
     width: 100%;
-    max-width: 420px;
+    max-width: 450px;
     height: 100%;
-    background: var(--surface-light);
+    background: white;
     z-index: 10001;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.05);
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     display: flex;
     flex-direction: column;
 }
@@ -1048,11 +1062,13 @@ a {
 }
 
 .cart-header h3 {
-    color: var(--secondary);
-    font-size: 1.3rem;
+    color: var(--text-main);
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-family: var(--font-display);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .close-cart {
@@ -1120,13 +1136,13 @@ a {
 .cart-item-title {
     font-family: var(--font-display);
     color: var(--text-main);
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 1.05rem;
     margin-bottom: 5px;
 }
 
 .cart-item-price {
-    color: var(--secondary);
+    color: var(--primary-dark);
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -1155,16 +1171,17 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: var(--text-main);
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: var(--text-muted);
     font-weight: 600;
 }
 
 .total-price {
-    font-size: 1.4rem;
-    color: var(--secondary);
-    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--text-main);
+    font-weight: 800;
+    font-family: var(--font-body);
 }
 
 .cart-disclaimer {
@@ -1181,13 +1198,13 @@ a {
 
 /* Top Bar Announcement */
 .top-bar {
-    background: var(--secondary);
+    background: var(--text-main);
     color: white;
     text-align: center;
-    padding: 8px;
-    font-size: 0.75rem;
+    padding: 10px;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
 }
 
