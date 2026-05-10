@@ -689,6 +689,12 @@ a {
     transform: translateY(0);
 }
 
+/* Touch-active state for mobile (JavaScript adds this class) */
+.premium-card.touch-active .card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .status-badge {
     position: absolute;
     top: 20px;
@@ -1442,6 +1448,47 @@ a {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+    }
+
+    /* ── MOBILE: botón "Al Carrito" siempre visible ── */
+    .card-img-container {
+        overflow: visible;         /* Permite que el overlay salga del recorte */
+    }
+
+    .product-image {
+        border-radius: 0;          /* La tarjeta ya tiene border-radius */
+    }
+
+    .card-overlay {
+        position: static;          /* Sale del posicionamiento absoluto */
+        transform: none !important;
+        opacity: 1 !important;
+        padding: 0;
+        background: none;
+        margin-top: 0;
+    }
+
+    .card-overlay .buy-btn {
+        width: 100%;
+        border-radius: 0;          /* Botón borde-a-borde */
+        padding: 16px 20px;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        box-shadow: none;
+    }
+
+    /* Desactiva el hover lift en móvil para evitar saltos */
+    .premium-card:hover {
+        transform: none;
+        box-shadow: 0 15px 40px rgba(255,127,165,0.08);
+    }
+
+    .premium-card:hover::before {
+        opacity: 0;
+    }
+
+    .premium-card:hover .product-image {
+        transform: none;
     }
 }
 
