@@ -140,13 +140,25 @@
         <section id="coleccion" class="boutique">
             <div class="section-header reveal-up">
                 <h3 class="section-title center">Nuestra <span class="text-cursive">Boutique</span></h3>
-                <p class="section-desc center">Descubre los enterizos, pijamas y lencería que están robando corazones.
-                </p>
+                <p class="section-desc center">Descubre los enterizos, pijamas y lencería que están robando corazones.</p>
             </div>
 
-            <div class="premium-grid masonry-layout">
+            <!-- Category Filter Tabs -->
+            <div class="category-filters reveal-up">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Todas
+                </button>
+                <button class="filter-btn" data-filter="pijamas">
+                    <i class="fas fa-moon"></i> Pijamas
+                </button>
+                <button class="filter-btn" data-filter="lenceria">
+                    <i class="fas fa-heart"></i> Lencería
+                </button>
+            </div>
+
+            <div class="premium-grid masonry-layout" id="products-grid">
                 <!-- Product 1 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (4).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -170,7 +182,7 @@
                 </div>
 
                 <!-- Product 2 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.2s;">
                     <div class="card-img-container tall">
                         <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (2).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -194,7 +206,7 @@
                 </div>
 
                 <!-- Product 3 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.3s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM (1).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -218,7 +230,7 @@
                 </div>
 
                 <!-- Product 4 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-12 at 3.14.05 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -243,7 +255,7 @@
 
 
                 <!-- Product 6 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.3s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-05 at 8.08.01 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -267,7 +279,7 @@
                 </div>
 
                 <!-- Product 7 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-12 at 3.14.04 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -291,7 +303,7 @@
                 </div>
 
                 <!-- Product 8 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.2s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-05 at 8.06.24 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -313,7 +325,7 @@
                 </div>
 
                 <!-- Product 9 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.3s;">
                     <div class="card-img-container">
                         <img src="WhatsApp Image 2026-04-05 at 8.07.00 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -335,7 +347,7 @@
                 </div>
 
                 <!-- Product 10 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.25 PM.jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -358,7 +370,7 @@
                 </div>
 
                 <!-- Product 11 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.2s;">
                     <div class="card-img-container tall">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.25 PM (1).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -381,7 +393,7 @@
                 </div>
 
                 <!-- Product 12 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.3s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.25 PM (2).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -404,7 +416,7 @@
                 </div>
 
                 <!-- Product 13 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.25 PM (3).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -427,7 +439,7 @@
                 </div>
 
                 <!-- Product 14 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.2s;">
                     <div class="card-img-container tall">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.25 PM (4).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -450,7 +462,7 @@
                 </div>
 
                 <!-- Product 16 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.26 PM (1).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -473,7 +485,7 @@
                 </div>
 
                 <!-- Product 17 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.2s;">
                     <div class="card-img-container tall">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.26 PM (2).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -496,7 +508,7 @@
                 </div>
 
                 <!-- Product 18 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.3s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.26 PM (3).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -519,7 +531,7 @@
                 </div>
 
                 <!-- Product 19 -->
-                <div class="premium-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="premium-card reveal-up" data-category="pijamas" style="transition-delay: 0.1s;">
                     <div class="card-img-container">
                         <img src="PIJAMAS/WhatsApp Image 2026-05-09 at 9.00.26 PM (4).jpeg" alt="Pijama Exclusiva Musa"
                             class="product-image"
@@ -538,6 +550,111 @@
                             <span class="size-option selected">M</span>
                         </div>
                         <p class="price">$60.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Lencería 1 -->
+                <div class="premium-card reveal-up" data-category="lenceria" style="transition-delay: 0.1s;">
+                    <div class="card-img-container">
+                        <img src="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM.jpeg" alt="Lencería Musa"
+                            class="product-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Lencería Musa 1" data-price="65000"
+                                data-img="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">Nueva Llegada</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Lencería Musa 1</h4>
+                        <div class="size-selector">
+                            <span class="size-option selected">M</span>
+                        </div>
+                        <p class="price">$65.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Lencería 2 -->
+                <div class="premium-card reveal-up" data-category="lenceria" style="transition-delay: 0.2s;">
+                    <div class="card-img-container tall">
+                        <img src="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM (1).jpeg" alt="Lencería Musa"
+                            class="product-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Lencería Musa 2" data-price="65000"
+                                data-img="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM (1).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">Top de Ventas</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Lencería Musa 2</h4>
+                        <div class="size-selector">
+                            <span class="size-option selected">M</span>
+                        </div>
+                        <p class="price">$65.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Lencería 3 -->
+                <div class="premium-card reveal-up" data-category="lenceria" style="transition-delay: 0.3s;">
+                    <div class="card-img-container">
+                        <img src="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM (2).jpeg" alt="Lencería Musa"
+                            class="product-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1616016335345-2f8cb644bc45?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Lencería Musa 3" data-price="65000"
+                                data-img="Lenceria/WhatsApp Image 2026-05-09 at 9.18.05 PM (2).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">Edición Limitada</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Lencería Musa 3</h4>
+                        <div class="size-selector">
+                            <span class="size-option selected">M</span>
+                        </div>
+                        <p class="price">$65.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Lencería 4 -->
+                <div class="premium-card reveal-up" data-category="lenceria" style="transition-delay: 0.1s;">
+                    <div class="card-img-container">
+                        <img src="Lenceria/WhatsApp Image 2026-05-09 at 9.18.06 PM.jpeg" alt="Lencería Musa"
+                            class="product-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Lencería Musa 4" data-price="65000"
+                                data-img="Lenceria/WhatsApp Image 2026-05-09 at 9.18.06 PM.jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge hot">El Más Deseado</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Lencería Musa 4</h4>
+                        <div class="size-selector">
+                            <span class="size-option selected">M</span>
+                        </div>
+                        <p class="price">$65.000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Lencería 5 -->
+                <div class="premium-card reveal-up" data-category="lenceria" style="transition-delay: 0.2s;">
+                    <div class="card-img-container tall">
+                        <img src="Lenceria/WhatsApp Image 2026-05-09 at 9.18.06 PM (1).jpeg" alt="Lencería Musa"
+                            class="product-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop'">
+                        <div class="card-overlay">
+                            <button class="btn-solid w-100 buy-btn" data-product="Lencería Musa 5" data-price="65000"
+                                data-img="Lenceria/WhatsApp Image 2026-05-09 at 9.18.06 PM (1).jpeg"><i class="fas fa-cart-plus"></i> Al Carrito</button>
+                        </div>
+                        <span class="status-badge urgent">Nueva Llegada</span>
+                    </div>
+                    <div class="card-details">
+                        <h4>Lencería Musa 5</h4>
+                        <div class="size-selector">
+                            <span class="size-option selected">M</span>
+                        </div>
+                        <p class="price">$65.000 COP</p>
                     </div>
                 </div>
 

@@ -600,6 +600,68 @@ a {
     padding: 100px 8% 120px;
 }
 
+/* ================================
+   CATEGORY FILTER TABS
+   ================================ */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 12px 28px;
+    border: 2px solid var(--primary-light);
+    background: white;
+    color: var(--text-muted);
+    border-radius: 50px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--primary-glow);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 8px 25px var(--primary-glow);
+    transform: translateY(-3px);
+}
+
+.filter-btn i {
+    font-size: 0.85rem;
+}
+
+/* Card filter animation */
+.premium-card.hidden {
+    display: none;
+}
+
+.premium-card.filter-animate {
+    animation: filterPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes filterPop {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 .section-header {
     margin-bottom: 70px;
 }

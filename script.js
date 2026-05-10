@@ -247,4 +247,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================
+    // 5. CATEGORY FILTER TABS
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.premium-card[data-category]');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            productCards.forEach((card, i) => {
+                const category = card.getAttribute('data-category');
+                const matches = filter === 'all' || category === filter;
+
+                if (matches) {
+                    card.classList.remove('hidden');
+                    card.classList.remove('filter-animate');
+                    void card.offsetWidth; // fuerza reflow para reiniciar animación
+                    card.style.animationDelay = (i * 0.04) + 's';
+                    card.classList.add('filter-animate');
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('filter-animate');
+                }
+            });
+        });
+    });
+
 });
