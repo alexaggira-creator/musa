@@ -774,17 +774,54 @@ a {
 }
 
 .card-details {
-    padding: 20px 15px 25px;
+    padding: 25px 20px 30px;
     text-align: center;
-    background: white;
+    background: linear-gradient(to bottom, #ffffff, var(--bg-base));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-details h4 {
-    font-size: 1.15rem;
-    margin-bottom: 12px;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
     font-family: var(--font-display);
     color: var(--text-main);
     font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.card-details .price {
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.card-details .price::before {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.3;
+    margin: 0 auto 10px;
+}
+
+.card-details::after {
+    content: 'Ver Detalles \f061';
+    font-family: var(--font-body), "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.premium-card:hover .card-details::after {
+    color: var(--primary);
+    transform: translateX(5px);
 }
 
 .size-selector {
