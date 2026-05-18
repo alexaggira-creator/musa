@@ -218,20 +218,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 4. IMAGE LIGHTBOX (VIEW FULLSCREEN)
+    // 4. IMAGE LIGHTBOX (PREMIUM VIEW)
     // ==========================================
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
-    const productImages = document.querySelectorAll('.product-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxPrice = document.getElementById('lightbox-price');
+    const lightboxBuyBtn = document.getElementById('lightbox-buy-btn');
+    const productCardsLight = document.querySelectorAll('.premium-card');
 
-    productImages.forEach(img => {
-        img.addEventListener('click', () => {
-            if (lightboxImg && lightbox) {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('active');
-            }
-        });
+    productCardsLight.forEach(card => {
+        const img = card.querySelector('.product-image');
+        const titleEl = card.querySelector('.card-details h4');
+        const priceEl = card.querySelector('.price');
+        const buyBtnOriginal = card.querySelector('.buy-btn');
+        
+        if (img) {
+            img.addEventListener('click', () => {
+                if (lightboxImg && lightbox) {
+                    lightboxImg.src = img.src;
+                    
+                    if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
+                    if (lightboxPrice && priceEl) lightboxPrice.textContent = priceEl.textContent;
+                    
+                    if (lightboxBuyBtn && buyBtnOriginal) {
+                        lightboxBuyBtn.setAttribute('data-product', buyBtnOriginal.getAttribute('data-product'));
+                        lightboxBuyBtn.setAttribute('data-price', buyBtnOriginal.getAttribute('data-price'));
+                        lightboxBuyBtn.setAttribute('data-img', buyBtnOriginal.getAttribute('data-img'));
+                    }
+
+                    lightbox.classList.add('active');
+                }
+            });
+        }
     });
 
     const closeLightbox = () => {
@@ -242,9 +262,44 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (lightbox) {
         lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg) {
+            if (e.target === lightbox) {
                 closeLightbox();
             }
+        });
+    }
+
+    if (lightboxBuyBtn) {
+        // Size selector logic inside lightbox
+        const lightboxSizeOptions = document.querySelectorAll('#lightbox-sizes .size-option');
+        lightboxSizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                if (!option.classList.contains('out-of-stock')) {
+                    lightboxSizeOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                }
+            });
+        });
+
+        lightboxBuyBtn.addEventListener('click', () => {
+            const product = {
+                name: lightboxBuyBtn.getAttribute('data-product'),
+                price: parseInt(lightboxBuyBtn.getAttribute('data-price')),
+                img: lightboxBuyBtn.getAttribute('data-img'),
+                id: Date.now()
+            };
+
+            cart.push(product);
+            updateCartCount();
+            closeLightbox();
+            openCart();
+            
+            const originalText = lightboxBuyBtn.innerHTML;
+            lightboxBuyBtn.innerHTML = '<i class="fas fa-check"></i> ¡Añadido!';
+            lightboxBuyBtn.style.background = '#25D366';
+            setTimeout(() => {
+                lightboxBuyBtn.innerHTML = originalText;
+                lightboxBuyBtn.style.background = '';
+            }, 1500);
         });
     }
 
