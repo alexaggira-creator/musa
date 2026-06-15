@@ -294,36 +294,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    productCardsLight.forEach(card => {
+    // Función reutilizable para abrir el lightbox desde cualquier parte de la tarjeta
+    function openLightboxFromCard(card) {
         const img = card.querySelector('.product-image');
         const titleEl = card.querySelector('.card-details h4');
         const priceEl = card.querySelector('.price');
         const buyBtnOriginal = card.querySelector('.buy-btn');
+
+        if (lightboxImg && lightbox && img) {
+            if (!lightbox.classList.contains('active')) {
+                history.pushState({ modalOpen: true }, "");
+            }
+            lightboxImg.src = img.src;
+            
+            if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
+            if (lightboxPrice && priceEl) lightboxPrice.textContent = priceEl.textContent;
+            
+            if (lightboxBuyBtn && buyBtnOriginal) {
+                lightboxBuyBtn.setAttribute('data-product', buyBtnOriginal.getAttribute('data-product'));
+                lightboxBuyBtn.setAttribute('data-price', buyBtnOriginal.getAttribute('data-price'));
+                lightboxBuyBtn.setAttribute('data-img', buyBtnOriginal.getAttribute('data-img'));
+            }
+
+            // Renderizar tallas individuales del producto
+            const sizesData = buyBtnOriginal ? buyBtnOriginal.getAttribute('data-sizes') : null;
+            renderLightboxSizes(sizesData);
+
+            lightbox.classList.add('active');
+        }
+    }
+
+    productCardsLight.forEach(card => {
+        const img = card.querySelector('.product-image');
+        const cardDetails = card.querySelector('.card-details');
         
+        // Abrir lightbox al hacer click en la imagen
         if (img) {
-            img.addEventListener('click', () => {
-                if (lightboxImg && lightbox) {
-                    if (!lightbox.classList.contains('active')) {
-                        history.pushState({ modalOpen: true }, "");
-                    }
-                    lightboxImg.src = img.src;
-                    
-                    if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
-                    if (lightboxPrice && priceEl) lightboxPrice.textContent = priceEl.textContent;
-                    
-                    if (lightboxBuyBtn && buyBtnOriginal) {
-                        lightboxBuyBtn.setAttribute('data-product', buyBtnOriginal.getAttribute('data-product'));
-                        lightboxBuyBtn.setAttribute('data-price', buyBtnOriginal.getAttribute('data-price'));
-                        lightboxBuyBtn.setAttribute('data-img', buyBtnOriginal.getAttribute('data-img'));
-                    }
+            img.addEventListener('click', () => openLightboxFromCard(card));
+        }
 
-                    // Renderizar tallas individuales del producto
-                    const sizesData = buyBtnOriginal ? buyBtnOriginal.getAttribute('data-sizes') : null;
-                    renderLightboxSizes(sizesData);
-
-                    lightbox.classList.add('active');
-                }
-            });
+        // Abrir lightbox al hacer click en "Ver Detalles"
+        if (cardDetails) {
+            cardDetails.addEventListener('click', () => openLightboxFromCard(card));
         }
     });
 

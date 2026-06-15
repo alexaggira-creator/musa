@@ -834,6 +834,10 @@ a {
     margin: 0 auto 10px;
 }
 
+.card-details {
+    cursor: pointer;
+}
+
 .card-details::after {
     content: 'Ver Detalles \f061';
     font-family: var(--font-body), "Font Awesome 6 Free";
@@ -843,6 +847,7 @@ a {
     letter-spacing: 2px;
     color: var(--text-muted);
     transition: color 0.3s, transform 0.3s;
+    display: inline-block;
 }
 
 .premium-card:hover .card-details::after {
