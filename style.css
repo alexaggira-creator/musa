@@ -725,13 +725,15 @@ a {
 
 .card-img-container {
     position: relative;
-    height: 450px;
+    aspect-ratio: 4/5;
+    height: auto;
     overflow: hidden;
     background: var(--bg-base);
 }
 
 .card-img-container.tall {
-    height: 550px; /* Variación de tamaño para efecto masonry */
+    aspect-ratio: 3/4; /* Variación un poco más alta para efecto masonry */
+    height: auto;
 }
 
 .product-image {
@@ -1680,7 +1682,8 @@ a {
         padding: 60px 5% 80px;
     }
     .card-img-container, .card-img-container.tall {
-        height: 400px;
+        aspect-ratio: 4/5;
+        height: auto;
     }
     .wa-tooltip {
         display: none; 
@@ -1793,7 +1796,8 @@ a {
         height: 300px;
     }
     .card-img-container, .card-img-container.tall {
-        height: 300px;
+        aspect-ratio: 4/5;
+        height: auto;
     }
     .premium-grid, .reviews-grid {
         grid-template-columns: 1fr;
