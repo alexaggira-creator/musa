@@ -8,7 +8,15 @@ def parse_filename(filename):
     talla_match = re.search(r'[Tt]alla\s+([^.$]+)', filename)
     price_match = re.search(r'\$([\d.]+)', filename)
     
-    talla = talla_match.group(1).strip() if talla_match else ""
+    talla_raw = talla_match.group(1).strip() if talla_match else ""
+    
+    # Manejar tallas múltiples: "S y XL", "S y M", "M y L", etc.
+    if ' y ' in talla_raw.lower():
+        tallas_parts = re.split(r'\s+y\s+', talla_raw, flags=re.IGNORECASE)
+        talla = ','.join([t.strip().upper() for t in tallas_parts])
+    else:
+        talla = talla_raw
+    
     price_str = price_match.group(1).replace('.', '') if price_match else "0"
     try:
         price = int(price_str)
