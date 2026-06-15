@@ -82,15 +82,34 @@ document.addEventListener('DOMContentLoaded', () => {
     cartOverlay.addEventListener('click', closeCart);
 
     function openCart() {
+        if (!cartSidebar.classList.contains('active')) {
+            history.pushState({ modalOpen: true }, "");
+        }
         cartOverlay.classList.add('active');
         cartSidebar.classList.add('active');
         renderCart();
     }
 
     function closeCart() {
+        const wasActive = cartSidebar.classList.contains('active');
         cartOverlay.classList.remove('active');
         cartSidebar.classList.remove('active');
+        if (wasActive && history.state && history.state.modalOpen) {
+            history.back();
+        }
     }
+
+    // Manejar el botón de atrás del celular
+    window.addEventListener('popstate', (e) => {
+        if (cartSidebar && cartSidebar.classList.contains('active')) {
+            cartOverlay.classList.remove('active');
+            cartSidebar.classList.remove('active');
+        }
+        const lightboxEl = document.getElementById('lightbox');
+        if (lightboxEl && lightboxEl.classList.contains('active')) {
+            lightboxEl.classList.remove('active');
+        }
+    });
 
     // Formatear moneda
     const formatCurrency = (number) => {
@@ -284,6 +303,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (img) {
             img.addEventListener('click', () => {
                 if (lightboxImg && lightbox) {
+                    if (!lightbox.classList.contains('active')) {
+                        history.pushState({ modalOpen: true }, "");
+                    }
                     lightboxImg.src = img.src;
                     
                     if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
@@ -306,7 +328,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const closeLightbox = () => {
-        if (lightbox) lightbox.classList.remove('active');
+        if (lightbox && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            }
+        }
     };
 
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
