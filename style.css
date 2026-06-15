@@ -1685,6 +1685,10 @@ a {
         aspect-ratio: 4/5;
         height: auto;
     }
+    .hero-img-main {
+        height: 500px;
+        border-radius: 20px 80px 20px 20px;
+    }
     .wa-tooltip {
         display: none; 
     }
@@ -1798,6 +1802,10 @@ a {
     .card-img-container, .card-img-container.tall {
         aspect-ratio: 4/5;
         height: auto;
+    }
+    .hero-img-main {
+        height: 400px;
+        border-radius: 20px 60px 20px 20px;
     }
     .premium-grid, .reviews-grid {
         grid-template-columns: 1fr;
