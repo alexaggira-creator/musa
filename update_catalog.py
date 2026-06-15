@@ -1,5 +1,6 @@
 import os
 import re
+import random
 
 def parse_filename(filename):
     name = filename.split('.')[0]
@@ -28,9 +29,18 @@ categories = {
 html_cards = []
 delay = 0.1
 
+badges = [
+    '<span class="status-badge hot">🔥 Más Vendido</span>',
+    '<span class="status-badge urgent">✨ Última Unidad</span>',
+    '<span class="status-badge urgent">💎 Edición Limitada</span>'
+]
+
+# Set a seed to have consistent badges across reruns
+random.seed(42)
+
 for folder, cat in categories.items():
     if not os.path.exists(folder): continue
-    for f in os.listdir(folder):
+    for f in sorted(os.listdir(folder)): # Sort for deterministic output
         if not f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')): continue
         
         name, talla, price, formatted_price = parse_filename(f)
@@ -42,12 +52,18 @@ for folder, cat in categories.items():
         data_sizes = talla if talla else "S,M,L,XL"
         data_price = price if price else 0
         
+        # Randomly assign a badge to ~20% of products
+        badge_html = ""
+        if random.random() < 0.20:
+            badge_html = random.choice(badges)
+            
         card = f"""
                 <div class="premium-card reveal-up" data-category="{cat}" style="transition-delay: {delay}s;">
                     <div class="card-img-container">
                         <img src="{img_path}" alt="{name}"
-                            class="product-image"
+                            class="product-image" loading="lazy"
                             onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop'">
+                        {badge_html}
                         <div class="card-overlay">
                             <button class="btn-solid w-100 buy-btn" data-sizes="{data_sizes}" data-product="{name}" data-price="{data_price}"
                                 data-img="{img_path}"><i
@@ -75,17 +91,7 @@ pattern = re.compile(r'(<div class="premium-grid masonry-layout" id="products-gr
 
 new_content = pattern.sub(r'\1\n' + cards_str.replace('\\', '\\\\') + r'\n            </div>\n        \2', content)
 
-# Also update the editorial images
-new_content = new_content.replace(
-    '<img src="https://images.unsplash.com/photo-1596700683074-cefc379bd479?q=80&w=2069&auto=format&fit=crop"',
-    '<img src="Lenceria/Luxe Secret. Talla M. $60.000.jpeg"'
-)
-new_content = new_content.replace(
-    '<img src="https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=2070&auto=format&fit=crop"',
-    '<img src="PIJAMAS/Soft Rose. Talla M. $40.000.jpeg"'
-)
-
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(new_content)
 
-print("Update complete")
+print("Update complete with Lazy Loading and Neuro-sales Badges")
