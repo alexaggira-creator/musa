@@ -82,10 +82,10 @@ for folder, cat, f in all_files:
                         {price_html}
                     </div>
                 </div>"""
-        html_cards.append(card)
-        delay += 0.1
-        if delay > 0.3:
-            delay = 0.1
+    html_cards.append(card)
+    delay += 0.1
+    if delay > 0.3:
+        delay = 0.1
 
 cards_str = "\n".join(html_cards)
 
