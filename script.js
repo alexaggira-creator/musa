@@ -97,15 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(number);
     };
 
-    // Añadir al carrito
-    const buyButtons = document.querySelectorAll('.buy-btn');
+    // Añadir al carrito (desde tarjetas directamente - sin talla, se agrega como "Única")
+    const buyButtons = document.querySelectorAll('.premium-card .buy-btn');
     buyButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const sizes = button.getAttribute('data-sizes');
+            const sizesArray = sizes ? sizes.split(',').map(s => s.trim()) : ['Única'];
+            
             const product = {
                 name: button.getAttribute('data-product'),
                 price: parseInt(button.getAttribute('data-price')),
                 img: button.getAttribute('data-img'),
-                id: Date.now() // unique id for each added item
+                size: sizesArray[0], // Primera talla disponible por defecto
+                id: Date.now()
             };
 
             cart.push(product);
@@ -156,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${imgSrc}" alt="${item.name}" class="cart-item-img" onerror="this.src='https://images.unsplash.com/photo-1620612261623-261ba0cd58cb?q=80&w=200&auto=format&fit=crop'">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-size">Talla: ${item.size || 'Única'}</div>
                         <div class="cart-item-price">${formatCurrency(item.price)}</div>
                     </div>
                     <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
@@ -194,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let total = 0;
         cart.forEach((item, i) => {
-            mensaje += `🛒 ${i+1}. *${item.name}* (Talla M) - ${formatCurrency(item.price)}\n`;
+            mensaje += `🛒 ${i+1}. *${item.name}* (Talla ${item.size || 'Única'}) - ${formatCurrency(item.price)}\n`;
             total += item.price;
         });
 
@@ -228,6 +234,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxBuyBtn = document.getElementById('lightbox-buy-btn');
     const productCardsLight = document.querySelectorAll('.premium-card');
 
+    const lightboxSizesContainer = document.getElementById('lightbox-sizes');
+    let currentSelectedSize = null;
+
+    // Función para renderizar las tallas del producto en el lightbox
+    function renderLightboxSizes(sizesString) {
+        if (!lightboxSizesContainer) return;
+        lightboxSizesContainer.innerHTML = '';
+        currentSelectedSize = null;
+
+        if (!sizesString) {
+            // Sin tallas definidas, mostrar "Talla Única"
+            lightboxSizesContainer.innerHTML = '<span class="size-option selected">Única</span>';
+            currentSelectedSize = 'Única';
+            return;
+        }
+
+        const sizes = sizesString.split(',').map(s => s.trim());
+        let firstAvailable = true;
+
+        sizes.forEach(size => {
+            const span = document.createElement('span');
+            span.classList.add('size-option');
+            span.textContent = size;
+
+            // La primera talla disponible se selecciona por defecto
+            if (firstAvailable) {
+                span.classList.add('selected');
+                currentSelectedSize = size;
+                firstAvailable = false;
+            }
+
+            span.addEventListener('click', () => {
+                lightboxSizesContainer.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+                span.classList.add('selected');
+                currentSelectedSize = size;
+            });
+
+            lightboxSizesContainer.appendChild(span);
+        });
+    }
+
     productCardsLight.forEach(card => {
         const img = card.querySelector('.product-image');
         const titleEl = card.querySelector('.card-details h4');
@@ -247,6 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         lightboxBuyBtn.setAttribute('data-price', buyBtnOriginal.getAttribute('data-price'));
                         lightboxBuyBtn.setAttribute('data-img', buyBtnOriginal.getAttribute('data-img'));
                     }
+
+                    // Renderizar tallas individuales del producto
+                    const sizesData = buyBtnOriginal ? buyBtnOriginal.getAttribute('data-sizes') : null;
+                    renderLightboxSizes(sizesData);
 
                     lightbox.classList.add('active');
                 }
@@ -269,22 +320,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (lightboxBuyBtn) {
-        // Size selector logic inside lightbox
-        const lightboxSizeOptions = document.querySelectorAll('#lightbox-sizes .size-option');
-        lightboxSizeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                if (!option.classList.contains('out-of-stock')) {
-                    lightboxSizeOptions.forEach(opt => opt.classList.remove('selected'));
-                    option.classList.add('selected');
-                }
-            });
-        });
-
         lightboxBuyBtn.addEventListener('click', () => {
             const product = {
                 name: lightboxBuyBtn.getAttribute('data-product'),
                 price: parseInt(lightboxBuyBtn.getAttribute('data-price')),
                 img: lightboxBuyBtn.getAttribute('data-img'),
+                size: currentSelectedSize || 'Única',
                 id: Date.now()
             };
 

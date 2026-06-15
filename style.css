@@ -1205,6 +1205,14 @@ a {
     margin-bottom: 5px;
 }
 
+.cart-item-size {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
+}
+
 .cart-item-price {
     color: var(--primary-dark);
     font-weight: 600;
