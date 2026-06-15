@@ -35,29 +35,35 @@ badges = [
     '<span class="status-badge urgent">💎 Edición Limitada</span>'
 ]
 
-# Set a seed to have consistent badges across reruns
+# Set a seed to have consistent layout and badges across reruns
 random.seed(42)
 
+all_files = []
 for folder, cat in categories.items():
     if not os.path.exists(folder): continue
-    for f in sorted(os.listdir(folder)): # Sort for deterministic output
+    for f in sorted(os.listdir(folder)):
         if not f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')): continue
+        all_files.append((folder, cat, f))
+
+# Mezclar los productos para que pijamas y lencería aparezcan combinados
+random.shuffle(all_files)
+
+for folder, cat, f in all_files:
+    name, talla, price, formatted_price = parse_filename(f)
+    img_path = f"{folder}/{f}"
+    
+    talla_html = f'<p style="margin: 5px 0; font-size: 0.9em; color: #666;">Talla: {talla}</p>' if talla else ''
+    price_html = f'<p class="price">{formatted_price}</p>' if formatted_price else ''
+    
+    data_sizes = talla if talla else "S,M,L,XL"
+    data_price = price if price else 0
+    
+    # Randomly assign a badge to ~20% of products
+    badge_html = ""
+    if random.random() < 0.20:
+        badge_html = random.choice(badges)
         
-        name, talla, price, formatted_price = parse_filename(f)
-        img_path = f"{folder}/{f}"
-        
-        talla_html = f'<p style="margin: 5px 0; font-size: 0.9em; color: #666;">Talla: {talla}</p>' if talla else ''
-        price_html = f'<p class="price">{formatted_price}</p>' if formatted_price else ''
-        
-        data_sizes = talla if talla else "S,M,L,XL"
-        data_price = price if price else 0
-        
-        # Randomly assign a badge to ~20% of products
-        badge_html = ""
-        if random.random() < 0.20:
-            badge_html = random.choice(badges)
-            
-        card = f"""
+    card = f"""
                 <div class="premium-card reveal-up" data-category="{cat}" style="transition-delay: {delay}s;">
                     <div class="card-img-container">
                         <img src="{img_path}" alt="{name}"
