@@ -61,7 +61,9 @@ for folder, cat, f in all_files:
     img_path = f"{folder}/{f}"
     
     talla_html = f'<p style="margin: 5px 0; font-size: 0.9em; color: #666;">Talla: {talla}</p>' if talla else ''
-    price_html = f'<p class="price">{formatted_price}</p>' if formatted_price else ''
+    old_price = int(price) + 20000 if price else 0
+    old_price_str = f"${old_price:,} COP".replace(',', '.') if old_price else ""
+    price_html = f'<p class="price"><del class="old-price">{old_price_str}</del> <span class="new-price">{formatted_price}</span></p>' if formatted_price else ''
     
     data_sizes = talla if talla else "S,M,L,XL"
     data_price = price if price else 0
@@ -81,7 +83,7 @@ for folder, cat, f in all_files:
                         <div class="card-overlay">
                             <button class="btn-solid w-100 buy-btn" data-sizes="{data_sizes}" data-product="{name}" data-price="{data_price}"
                                 data-img="{img_path}"><i
-                                    class="fas fa-cart-plus"></i> Al Carrito</button>
+                                    class="fas fa-heart"></i> Lo Quiero</button>
                         </div>
                     </div>
                     <div class="card-details">

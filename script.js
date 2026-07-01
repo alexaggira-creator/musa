@@ -68,6 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartTotalPrice = document.getElementById('cart-total-price');
     const emptyCartMsg = document.getElementById('empty-cart-msg');
     
+    // Timer elements
+    const cartTimer = document.getElementById('cart-timer');
+    const timerCountdown = document.getElementById('timer-countdown');
+    let timerInterval = null;
+    let timerTime = 15 * 60; // 15 minutos
+    
     // Configura tu número aquí
     const numeroWhatsApp = "573000000000"; 
 
@@ -159,16 +165,47 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpiar el contenedor (excepto el mensaje de vacío que lo ocultamos/mostramos)
         cartItemsContainer.innerHTML = '';
         let total = 0;
+        
+        // Calcular total primero
+        cart.forEach((item) => {
+            total += item.price;
+        });
+
+        // Shipping Progress Bar Logic
+        const shippingThreshold = 150000;
+        const shippingProgressContainer = document.getElementById('shipping-progress-container');
+        const shippingText = document.getElementById('shipping-text');
+        const shippingBar = document.getElementById('shipping-bar');
 
         if (cart.length === 0) {
             cartItemsContainer.appendChild(emptyCartMsg);
             emptyCartMsg.style.display = 'block';
+            if (cartTimer) cartTimer.style.display = 'none';
+            if (shippingProgressContainer) shippingProgressContainer.style.display = 'none';
         } else {
             // No mostrar mensaje vacío
             emptyCartMsg.style.display = 'none';
+            if (cartTimer) {
+                cartTimer.style.display = 'block';
+                startCartTimer();
+            }
+            
+            if (shippingProgressContainer) {
+                shippingProgressContainer.style.display = 'block';
+                if (total >= shippingThreshold) {
+                    shippingText.innerHTML = '¡Felicidades! Tienes <span style="color:#25D366">Envío Gratis</span> 🎉';
+                    shippingBar.style.width = '100%';
+                    shippingBar.style.background = '#25D366';
+                } else {
+                    const remaining = shippingThreshold - total;
+                    shippingText.innerHTML = `Faltan <span style="color:var(--primary)">${formatCurrency(remaining)}</span> para envío gratis`;
+                    const percentage = (total / shippingThreshold) * 100;
+                    shippingBar.style.width = `${percentage}%`;
+                    shippingBar.style.background = 'linear-gradient(90deg, var(--primary), var(--secondary))';
+                }
+            }
 
             cart.forEach((item, index) => {
-                total += item.price;
                 
                 const itemEl = document.createElement('div');
                 itemEl.classList.add('cart-item');
@@ -198,12 +235,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cartTotalPrice.textContent = formatCurrency(total);
+        renderUpsell();
+    }
+    
+    // UPSELL LOGIC
+    const cartUpsell = document.getElementById('cart-upsell');
+    const upsellImg = document.getElementById('upsell-img');
+    const upsellName = document.getElementById('upsell-name');
+    const upsellPrice = document.getElementById('upsell-price');
+    const upsellAddBtn = document.getElementById('upsell-add-btn');
+    let currentUpsellProduct = null;
+
+    function renderUpsell() {
+        if (!cartUpsell) return;
+        if (cart.length === 0) {
+            cartUpsell.style.display = 'none';
+            return;
+        }
+        
+        const cartNames = cart.map(item => item.name);
+        const allCards = document.querySelectorAll('.premium-card .buy-btn');
+        let availableProducts = [];
+        
+        allCards.forEach(btn => {
+            const name = btn.getAttribute('data-product');
+            if (!cartNames.includes(name)) {
+                availableProducts.push({
+                    name: name,
+                    price: parseInt(btn.getAttribute('data-price')),
+                    img: btn.getAttribute('data-img'),
+                    sizes: btn.getAttribute('data-sizes')
+                });
+            }
+        });
+
+        if (availableProducts.length > 0) {
+            if (!currentUpsellProduct || cartNames.includes(currentUpsellProduct.name)) {
+                currentUpsellProduct = availableProducts[Math.floor(Math.random() * availableProducts.length)];
+            }
+            upsellImg.src = currentUpsellProduct.img;
+            upsellName.textContent = currentUpsellProduct.name;
+            upsellPrice.textContent = formatCurrency(currentUpsellProduct.price);
+            cartUpsell.style.display = 'block';
+        } else {
+            cartUpsell.style.display = 'none';
+        }
+    }
+
+    if (upsellAddBtn) {
+        upsellAddBtn.addEventListener('click', () => {
+            if (currentUpsellProduct) {
+                const sizesArray = currentUpsellProduct.sizes ? currentUpsellProduct.sizes.split(',').map(s => s.trim()) : ['Única'];
+                cart.push({
+                    name: currentUpsellProduct.name,
+                    price: currentUpsellProduct.price,
+                    img: currentUpsellProduct.img,
+                    size: sizesArray[0],
+                    id: Date.now()
+                });
+                updateCartCount();
+                renderCart();
+                
+                const originalText = upsellAddBtn.innerHTML;
+                upsellAddBtn.innerHTML = '<i class="fas fa-check"></i>';
+                upsellAddBtn.style.background = '#25D366';
+                setTimeout(() => {
+                    upsellAddBtn.innerHTML = originalText;
+                    upsellAddBtn.style.background = 'var(--primary)';
+                }, 1500);
+            }
+        });
     }
 
     function removeFromCart(index) {
         cart.splice(index, 1);
         updateCartCount();
         renderCart();
+    }
+
+    function startCartTimer() {
+        if (timerInterval) return;
+        timerInterval = setInterval(() => {
+            if (timerTime <= 0) {
+                clearInterval(timerInterval);
+                if (timerCountdown) timerCountdown.textContent = "00:00";
+                return;
+            }
+            timerTime--;
+            const m = Math.floor(timerTime / 60).toString().padStart(2, '0');
+            const s = (timerTime % 60).toString().padStart(2, '0');
+            if (timerCountdown) timerCountdown.textContent = `${m}:${s}`;
+        }, 1000);
     }
 
     // Enviar pedido por WhatsApp
@@ -414,5 +536,65 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // ==========================================
+    // 6. SOCIAL PROOF POPUP
+    // ==========================================
+    const sppPopup = document.getElementById('social-proof-popup');
+    const sppClose = document.getElementById('spp-close');
+    const sppImg = document.getElementById('spp-img');
+    const sppName = document.getElementById('spp-name');
+    const sppCity = document.getElementById('spp-city');
+    const sppProductName = document.getElementById('spp-product-name');
+    const sppTimeAgo = document.getElementById('spp-time-ago');
+
+    const names = ['Valentina', 'Camila', 'Andrea', 'Sofía', 'Mariana', 'Isabella', 'Luciana', 'Daniela'];
+    const cities = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Bucaramanga', 'Cartagena', 'Pereira'];
+    
+    // Extraer productos del DOM (esto garantiza que los productos mostrados sean reales)
+    function getRandomProduct() {
+        const cards = document.querySelectorAll('.premium-card .product-image');
+        if (!cards || cards.length === 0) return null;
+        const randomCard = cards[Math.floor(Math.random() * cards.length)];
+        return {
+            name: randomCard.getAttribute('alt'),
+            img: randomCard.getAttribute('src')
+        };
+    }
+
+    function showSocialProof() {
+        if (!sppPopup) return;
+        
+        const product = getRandomProduct();
+        if (!product) return;
+
+        sppImg.src = product.img;
+        sppProductName.textContent = product.name;
+        sppName.textContent = names[Math.floor(Math.random() * names.length)];
+        sppCity.textContent = cities[Math.floor(Math.random() * cities.length)];
+        sppTimeAgo.textContent = Math.floor(Math.random() * 59) + 1;
+
+        sppPopup.classList.add('show');
+
+        // Ocultar después de 5 segundos
+        setTimeout(() => {
+            sppPopup.classList.remove('show');
+        }, 5000);
+    }
+
+    if (sppClose) {
+        sppClose.addEventListener('click', () => sppPopup.classList.remove('show'));
+    }
+
+    // Mostrar el primer popup entre 5 y 10 segundos después de cargar la página
+    setTimeout(() => {
+        showSocialProof();
+        // Mostrar recurrentemente cada 20 a 40 segundos
+        setInterval(() => {
+            if (Math.random() > 0.3) { // 70% de probabilidad de que salga
+                showSocialProof();
+            }
+        }, Math.floor(Math.random() * 20000) + 20000);
+    }, Math.floor(Math.random() * 5000) + 5000);
 
 });

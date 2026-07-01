@@ -254,6 +254,19 @@ a {
     background: var(--primary-dark) !important;
 }
 
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-right: 8px;
+    font-weight: 400;
+}
+
+.new-price {
+    color: var(--secondary);
+    font-weight: 800;
+}
+
 .btn-sm {
     padding: 10px 25px;
     font-size: 0.75rem;
@@ -797,6 +810,98 @@ a {
 .status-badge.urgent {
     color: white;
     background: var(--secondary);
+}
+
+/* Social Proof Popup */
+.social-proof-popup {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 1px solid rgba(255,127,165,0.2);
+    pointer-events: none;
+    max-width: 350px;
+}
+.social-proof-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+.spp-img-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.spp-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.spp-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.spp-product {
+    font-family: var(--font-display);
+    font-weight: 700 !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
+    margin: 3px 0 !important;
+}
+.spp-time {
+    font-size: 0.75rem !important;
+    color: var(--primary) !important;
+}
+.spp-close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.spp-close:hover {
+    color: var(--text-main);
+}
+@media (max-width: 768px) {
+    .social-proof-popup {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+}
+
+/* Premium Badge Shimmer Effect */
+.status-badge {
+    overflow: hidden;
+}
+.status-badge::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 3s infinite;
+    transform: skewX(-20deg);
+}
+@keyframes shimmer {
+    100% { left: 200%; }
 }
 
 .card-details {
