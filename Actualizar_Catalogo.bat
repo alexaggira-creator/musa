@@ -1,0 +1,3 @@
+@echo off
+echo Actualizando el catalogo...
+python update_catalog.py

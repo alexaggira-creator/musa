@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerTime = 15 * 60; // 15 minutos
     
     // Configura tu número aquí
-    const numeroWhatsApp = "573000000000"; 
+    const numeroWhatsApp = "573104104298"; 
 
     // Abrir carrito
     cartIcon.addEventListener('click', (e) => {

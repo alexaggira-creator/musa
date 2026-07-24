@@ -110,4 +110,5 @@ new_content = pattern.sub(r'\1\n' + cards_str.replace('\\', '\\\\') + r'\n      
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(new_content)
 
-print("Update complete with Lazy Loading and Neuro-sales Badges")
+print("¡El catálogo se ha actualizado con éxito!")
+input("\nPresiona ENTER para cerrar esta ventana...")
