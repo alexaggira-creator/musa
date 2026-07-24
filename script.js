@@ -430,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxImg.src = img.src;
             
             if (lightboxTitle && titleEl) lightboxTitle.textContent = titleEl.textContent;
-            if (lightboxPrice && priceEl) lightboxPrice.textContent = priceEl.textContent;
+            if (lightboxPrice && priceEl) lightboxPrice.innerHTML = priceEl.innerHTML;
             
             if (lightboxBuyBtn && buyBtnOriginal) {
                 lightboxBuyBtn.setAttribute('data-product', buyBtnOriginal.getAttribute('data-product'));
